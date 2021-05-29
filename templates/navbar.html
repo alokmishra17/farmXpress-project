@@ -1,11 +1,13 @@
 {% load cart_template_tags %}
+{% load static %}
+<link href="{% static '/open-iconic-master/font/css/open-iconic-bootstrap.css' %}" rel="stylesheet">
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark black scrolling-navbar">
     <div class="container">
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="/">
-        <strong class="blue-text">farmXpress</strong>
+        <img src="{% static 'logo.png' %}" height=32 width=32> </img> <strong class="white-text">farmXpress</strong>
       </a>
 
       <!-- Collapse -->
@@ -37,23 +39,23 @@
             <a href="{% url 'core:order-summary' %}" class="nav-link waves-effect">
               <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
               <i class="fas fa-shopping-cart"></i>
-              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+              <span class="clearfix d-none d-sm-inline-block"> <b>Cart</b> </span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{% url 'account_logout' %}">
-              <span class="clearfix d-none d-sm-inline-block"> Logout </span>
+             <b>Logout </b><span class="oi oi-account-logout"></span>
             </a>
           </li>
           {% else %}
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{% url 'account_login' %}">
-              <span class="clearfix d-none d-sm-inline-block"> Login </span>
+              <b>Login </b> <span class="oi oi-account-login"></span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{% url 'account_signup' %}">
-              <span class="clearfix d-none d-sm-inline-block"> Signup </span>
+              <b>SignUp </b><span class="oi oi-person"></span>
             </a>
           </li>
           {% endif %}

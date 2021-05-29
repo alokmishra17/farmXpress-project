@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-
+{% load custom_filter %}
 {% block content %}
   <main>
     <div class="container">
 
       <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color teal lighten-1 mt-3 mb-5">
 
         <!-- Navbar brand -->
-        <span class="navbar-brand">Categories:</span>
+        <span class="navbar-brand"><b>Categories</b></span>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -27,7 +27,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Fruits</a>
+              <a class="nav-link" href="{{item.get_absolute_url }}">Fruits</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Vegetables</a>
@@ -39,9 +39,9 @@
           </ul>
           <!-- Links -->
 
-          <form class="form-inline">
+          <form class="form-inline" method="GET" action=".">
             <div class="md-form my-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" type="search"  name= "Search" placeholder="Search" aria-label="Search">
             </div>
           </form>
         </div>
@@ -61,7 +61,6 @@
             <div class="card">
 
               <div class="view overlay">
-                {% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" {% endcomment %}
                 <img src="{{ item.image.url }}" class="card-img-top">
                 <a href="{{ item.get_absolute_url }}">
                   <div class="mask rgba-white-slight"></div>
@@ -75,21 +74,21 @@
                 <h5>
                   <strong>
                     <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
-                      <span class="badge badge-pill {{ item.get_label_display }}-color">NEW</span>
+                      <span class="badge badge-pill {{ item.get_label_display }}-color">Fresh</span>
                     </a>
                   </strong>
                 </h5>
 
                 <h4 class="font-weight-bold blue-text">
-                  <strong>$
+                  <strong>₹
                   {% if item.discount_price %}
-                  {{ item.discount_price }}
+                  {{ item.discount_price}}
                   {% else %}
                   {{ item.price }}
                   {% endif %}
+                  <i>per kg</i>
                   </strong>
                 </h4>
-
               </div>
 
             </div>

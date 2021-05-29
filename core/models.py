@@ -7,9 +7,9 @@ from django_countries.fields import CountryField
 
 
 CATEGORY_CHOICES = (
-    ('F', 'Fruits'),
-    ('V', 'Vegetables'),
-    ('OT', 'Others')
+    ('S', 'Fruits'),
+    ('SW', 'Vegetables'),
+    ('OW', 'Others')
 )
 
 LABEL_CHOICES = (
@@ -42,7 +42,10 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='images/')
+    icon1=models.ImageField(upload_to='images/', default=False)
+    icon2=models.ImageField(upload_to='images/', default=False)
+    icon3=models.ImageField(upload_to='images/', default=False)
 
     def __str__(self):
         return self.title

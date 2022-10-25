@@ -9,6 +9,7 @@ PAYMENT_CHOICES = (
 )
 
 
+#Method for check out Form
 class CheckoutForm(forms.Form):
     shipping_address = forms.CharField(required=False)
     shipping_address2 = forms.CharField(required=False)
@@ -38,6 +39,7 @@ class CheckoutForm(forms.Form):
         widget=forms.RadioSelect, choices=PAYMENT_CHOICES)
 
 
+#Method for Coupon form genration
 class CouponForm(forms.Form):
     code = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
@@ -46,7 +48,7 @@ class CouponForm(forms.Form):
         'aria-describedby': 'basic-addon2'
     }))
 
-
+#method for refund form genration
 class RefundForm(forms.Form):
     ref_code = forms.CharField()
     message = forms.CharField(widget=forms.Textarea(attrs={
@@ -55,6 +57,7 @@ class RefundForm(forms.Form):
     email = forms.EmailField()
 
 
+#Method for payment form genration
 class PaymentForm(forms.Form):
     stripeToken = forms.CharField(required=False)
     save = forms.BooleanField(required=False)

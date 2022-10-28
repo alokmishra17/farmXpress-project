@@ -1,0 +1,40 @@
+{% extends "openid/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}OpenID Sign In{% endblock %}
+
+{% block content %}
+
+<h1>{% trans 'OpenID Sign In' %}</h1>
+
+<style>
+.button {
+    background-color: #0078d0;
+    border: 0;
+    border-radius: 56px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    outline: 0;
+    padding: 16px 21px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+</style>
+
+<form id="openid_login_form" class="openid_login" method="post" action="{% url 'openid_login' %}">
+{% csrf_token %}
+{{form.as_p}}
+<button id="button" type="submit">Sign In</button>
+</form>
+
+{% endblock %}
